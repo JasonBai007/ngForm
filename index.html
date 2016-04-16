@@ -1,89 +1,95 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html ng-app="myApp">    
 <head>
-	<meta charset="UTF-8">
-	<title>ngForm</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/ngForm.css">
+    <meta charset="UTF-8">
+    <title>ngForm</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/ngForm.css">
 </head>
+    
 <body>
-	<div class="container" ng-controller="myCtrl">
-		<div class="col-md-6">
-		        <form role="form" class="form-horizontal">
-		            <div class="form-group">
-		                <div class="col-md-4">
-		                    <label for="name">1.必填项</label>
-		                </div>
-		                <div class="col-md-8">
-		                    <input class="form-control" id="name" type="text" required ng-model='user.name' />
-		                </div>
-		            </div>
-		            <div class="form-group">
-		                <div class="col-md-4">
-		                    <label for="minlength">2.最小长度=5</label>
-		                </div>
-		                <div class="col-md-8">
-		                    <input type="text" id="minlength" ng-minlength="5" ng-model="user.minlength" class="form-control" />
-		                </div>
-		            </div>
-		            <div class="form-group">
-		                <div class="col-md-4">
-		                    <label for="minlength">3.最大长度=20</label>
-		　　　　　　　　　　</div>
-		                <div class="col-md-8">
-		                    <input type="text" ng-model="user.maxlength" ng-maxlength="20" class="form-control" />
-		                </div>
-		            </div>
-		            <div class="form-group">
-		                <div class="col-md-4">
-		                    <label for="minlength">4. 模式匹配</label>
-		               </div>
-		                <div class="col-md-8">
-		                 <input type="text" id="minlength" ng-model="user.pattern" ng-pattern="/^[a-zA-Z]*\d$/" class="form-control" />
-		                </div>
-		            </div>
-		            <div class="form-group">
-		                <div class="col-md-4">
-		                    <label for="email">5. 电子邮件</label>
-		　　　　　　　　　　</div>
-		                <div class="col-md-8">
-		                    <input type="email" id="email" name="email" ng-model="user.email" class="form-control" />
-		                </div>
-		            </div>
-		            <div class="form-group">
-		                <div class="col-md-4">
-		                    <label for="age">6. 数字</label>
-		　　　　　　　　　　</div>
-		                <div class="col-md-8">
-		                    <input type="number" id="age" name="age" ng-model="user.age" class="form-control" />
-		                </div>
-		            </div>
-		            <div class="form-group">
-		                <div class="col-md-4">
-		                    <label for="url"> 7. URL</label>
-		　　　　　　　　　　</div>
-		                <div class="col-md-8">
-		                    <input type="url" id="url" name="homepage" ng-model="user.url" class="form-control" />
-		                </div>
-		            </div>
-		            <div class="form-group text-center">
-		                <input class="btn btn-primary btn-lg" type="submit" value="提交" />
-		            </div>
-		        </form>       
-		    </div>
-		    <div class="col-md-12">
-		        1.必填项:{{user.name}}<br>
-		        2.最小长度=5:{{user.minlength}}<br>
-		        3.最大长度=20:{{user.maxlength}}<br>
-		        4.模式匹配:{{user.pattern}}<br>
-		        5.电子邮件:{{user.email}}<br>
-		        6.数字:{{user.age}}<br>
-		        7.URL:{{user.url}}<br>
-		    </div>
-	</div>
-		
-	<script src="js/lib/angular.min.js"></script>
-	<script src="js/lib/ui-bootstrap-tpls.min.js"></script>
-	<script src="js/controller.js"></script>	
+    <div class="container" ng-controller="myCtrl">
+        <div class="col-md-4">
+            <form name="form" class="form-horizontal" novalidate>
+                <div class="form-group">
+                    <label for="name" class="col-md-3 control-label">必填项</label>
+                    <div class="col-md-9">
+                        <input class="form-control" id="name" type="text" required ng-model='user.name'/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="minlength"class="col-md-3 control-label">最小长度</label>
+                    <div class="col-md-9">
+                        <input type="text" id="minlength" ng-minlength="5" ng-model="user.minlength" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="maxlength" class="col-md-3 control-label">最大长度</label>
+                    <div class="col-md-9">
+                        <input class="form-control" id="maxlength" type="text" required ng-model='user.maxlength'/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="pattern"class="col-md-3 control-label">模式匹配</label>
+                    <div class="col-md-9">
+                        <input type="text" id="pattern" ng-model="user.pattern" ng-pattern="/^[a-zA-Z]*\d$/"
+                        class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-md-3 text-right">电子邮件</label>
+                    <div class="col-md-9">
+                        <input type="email" id="email" name="email" ng-model="user.email" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-md-3 text-right">电子邮件</label>
+                    <div class="col-md-9">
+                        <input type="number" id="age" name="age" ng-model="user.age" class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-md-3 text-right">电子邮件</label>
+                    <div class="col-md-9">
+                        <input type="url" id="url" name="homepage" ng-model="user.url" class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group text-center">
+                    <input class="btn btn-primary" type="submit" value="提交" ng-click="submit()"/>
+                    <input class="btn btn-primary" type="submit" value="重置"  ng-click="reset()"/>
+                </div>
+            </form>
+        </div>
+
+        <!-- 右侧表格 -->
+        <div class="col-md-8">
+            <table class="table table-condensed">
+                <tr>
+                    <th>必填项</th>
+                    <th>最小长度</th>
+                    <th>最大长度</th>
+                    <th>模式匹配</th>
+                    <th>电子邮件</th>
+                    <th>数字</th>
+                    <th>URL</th>
+                    <th>操作</th>
+                </tr>
+                <tr ng-repeat="record in records track by $index">
+                    <td ng-bind="record.name"></td>
+                    <td ng-bind="record.minlength"></td>
+                    <td ng-bind="record.maxlength"></td>
+                    <td ng-bind="record.pattern"></td>
+                    <td ng-bind="record.email"></td>
+                    <td ng-bind="record.age"></td>
+                    <td ng-bind="record.url"></td>
+                    <td><i class='icon-pencil' ng-click="open()"></i></td>
+                </tr>
+            </table>
+        </div>        
+    </div>
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/lib/ui-bootstrap-tpls.min.js"></script>
+    <script src="js/controller.js"></script>
 </body>
 </html>
