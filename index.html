@@ -10,83 +10,84 @@
     
 <body>
     <div class="container" ng-controller="myCtrl">
+
+        <!-- 左侧表单 -->
         <div class="col-md-4">
             <form name="form" class="form-horizontal" novalidate>
                 <div class="form-group">
-                    <label for="name" class="col-md-3 control-label">必填项</label>
+                    <label for="name" class="col-md-3 control-label">姓名<i>*</i></label>
                     <div class="col-md-9">
-                        <input class="form-control" id="name" type="text" required ng-model='user.name'/>
+                        <input class="form-control" id="name" type="text" ng-model='user.name' required />
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="minlength"class="col-md-3 control-label">最小长度</label>
+                    <label for="sex"class="col-md-3 control-label">性别<i>*</i></label>
+                    <label class="radio-inline" style="margin-left:18px">
+                      <input type="radio" name="sex" value="男" ng-model="user.sex" checked required> 男
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="sex" value="女" ng-model="user.sex" required> 女
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="age" class="col-md-3 control-label">年龄<i>*</i></label>
                     <div class="col-md-9">
-                        <input type="text" id="minlength" ng-minlength="5" ng-model="user.minlength" class="form-control" />
+                        <input class="form-control" id="age" type="number" required ng-model='user.age' ng-maxlength="2"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="maxlength" class="col-md-3 control-label">最大长度</label>
+                    <label for="area" class="col-md-3 text-right">地区<i>*</i></label>
                     <div class="col-md-9">
-                        <input class="form-control" id="maxlength" type="text" required ng-model='user.maxlength'/>
+                        <select class="form-control" id="area" ng-model="user.area" ng-options="x for x in areas" required placeholder="请选择">
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="pattern"class="col-md-3 control-label">模式匹配</label>
+                    <label for="email"class="col-md-3 control-label">邮箱<i>*</i></label>
                     <div class="col-md-9">
-                        <input type="text" id="pattern" ng-model="user.pattern" ng-pattern="/^[a-zA-Z]*\d$/"
-                        class="form-control" />
+                        <input type="email" id="email" ng-model="user.email" class="form-control" required/>
                     </div>
-                </div>
+                </div>            
                 <div class="form-group">
-                    <label for="email" class="col-md-3 text-right">电子邮件</label>
+                    <label for="msg" class="col-md-3 text-right">留言<i>&nbsp;</i></label>
                     <div class="col-md-9">
-                        <input type="email" id="email" name="email" ng-model="user.email" class="form-control" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="email" class="col-md-3 text-right">电子邮件</label>
-                    <div class="col-md-9">
-                        <input type="number" id="age" name="age" ng-model="user.age" class="form-control"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="email" class="col-md-3 text-right">电子邮件</label>
-                    <div class="col-md-9">
-                        <input type="url" id="url" name="homepage" ng-model="user.url" class="form-control"/>
+                        <textarea class="form-control" rows="3" id="msg" ng-model="user.msg" ng-maxlength="20"></textarea>
                     </div>
                 </div>
                 <div class="form-group text-center">
-                    <input class="btn btn-primary" type="submit" value="提交" ng-click="submit()"/>
-                    <input class="btn btn-primary" type="submit" value="重置"  ng-click="reset()"/>
+                    <input class="btn btn-primary" type="submit" value="提交" ng-click="submit()" ng-disabled="form.$invalid"/>
+                    <input class="btn btn-primary" type="submit" value="重置"  ng-click="reset()" ng-disabled="!form.$dirty"/>
                 </div>
             </form>
         </div>
 
         <!-- 右侧表格 -->
         <div class="col-md-8">
-            <table class="table table-condensed">
+            <table class="table table-hover table-striped">
                 <tr>
-                    <th>必填项</th>
-                    <th>最小长度</th>
-                    <th>最大长度</th>
-                    <th>模式匹配</th>
-                    <th>电子邮件</th>
-                    <th>数字</th>
-                    <th>URL</th>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>年龄</th>
+                    <th>地区</th>
+                    <th>邮箱</th>
+                    <th>留言</th>
                     <th>操作</th>
                 </tr>
                 <tr ng-repeat="record in records track by $index">
                     <td ng-bind="record.name"></td>
-                    <td ng-bind="record.minlength"></td>
-                    <td ng-bind="record.maxlength"></td>
-                    <td ng-bind="record.pattern"></td>
-                    <td ng-bind="record.email"></td>
+                    <td ng-bind="record.sex"></td>
                     <td ng-bind="record.age"></td>
-                    <td ng-bind="record.url"></td>
-                    <td><i class='icon-pencil' ng-click="open()"></i></td>
+                    <td ng-bind="record.area"></td>
+                    <td ng-bind="record.email"></td>
+                    <td ng-bind="record.msg"></td>
+                    <td>
+                        <i class='icon-pencil' ng-click="edit()"></i>&nbsp;&nbsp;
+                        <i class='icon-trash' ng-click="open()"></i>
+                    </td>
                 </tr>
             </table>
-        </div>        
+        </div>  
+
     </div>
     <script src="js/lib/angular.min.js"></script>
     <script src="js/lib/ui-bootstrap-tpls.min.js"></script>
