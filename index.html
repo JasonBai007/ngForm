@@ -23,7 +23,7 @@
                 <div class="form-group">
                     <label for="sex"class="col-md-3 control-label">性别<i>*</i></label>
                     <label class="radio-inline" style="margin-left:18px">
-                      <input type="radio" name="sex" value="男" ng-model="user.sex" checked required> 男
+                      <input type="radio" name="sex" value="男" ng-model="user.sex" required> 男
                     </label>
                     <label class="radio-inline">
                       <input type="radio" name="sex" value="女" ng-model="user.sex" required> 女
@@ -45,13 +45,13 @@
                 <div class="form-group">
                     <label for="email"class="col-md-3 control-label">邮箱<i>*</i></label>
                     <div class="col-md-9">
-                        <input type="email" id="email" ng-model="user.email" class="form-control" required/>
+                        <input type="email" id="email" name="email" ng-model="user.email" class="form-control" required uib-tooltip="eg.:username@yahoo.com" tooltip-placement="right" tooltip-enable="form.email.$invalid"/>
                     </div>
                 </div>            
                 <div class="form-group">
                     <label for="msg" class="col-md-3 text-right">留言<i>&nbsp;</i></label>
                     <div class="col-md-9">
-                        <textarea class="form-control" rows="3" id="msg" ng-model="user.msg" ng-maxlength="20"></textarea>
+                        <textarea class="form-control" rows="3" id="msg" name="msg" ng-model="user.msg" ng-maxlength="20" uib-tooltip="只能输入0 ~ 20个字符" tooltip-placement="top-right" tooltip-enable="form.msg.$invalid"></textarea>
                     </div>
                 </div>
                 <div class="form-group text-center">
@@ -63,7 +63,7 @@
 
         <!-- 右侧表格 -->
         <div class="col-md-8">
-            <table class="table table-hover table-striped">
+            <table class="table table-hover table-striped text-center">
                 <tr>
                     <th>姓名</th>
                     <th>性别</th>
@@ -73,7 +73,7 @@
                     <th>留言</th>
                     <th>操作</th>
                 </tr>
-                <tr ng-repeat="record in records track by $index">
+                <tr ng-repeat="record in records">
                     <td ng-bind="record.name"></td>
                     <td ng-bind="record.sex"></td>
                     <td ng-bind="record.age"></td>
@@ -81,8 +81,8 @@
                     <td ng-bind="record.email"></td>
                     <td ng-bind="record.msg"></td>
                     <td>
-                        <i class='icon-pencil' ng-click="edit()"></i>&nbsp;&nbsp;
-                        <i class='icon-trash' ng-click="open()"></i>
+                        <a href="#" uib-tooltip="编辑"><i class='icon-pencil' ng-click="edit($index)"></i></a>&nbsp;&nbsp;
+                        <a href="#" uib-tooltip="删除"><i class='icon-trash' ng-click="del($index)"></i></a>
                     </td>
                 </tr>
             </table>

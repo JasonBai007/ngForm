@@ -12,6 +12,7 @@ label i {
 }
 i{
 	font-size: 16px;
+	color: #000;
 }
 .icon-pencil:hover{
 	color: #49afcd;
@@ -20,4 +21,14 @@ i{
 .icon-trash:hover{
 	color: red;
 	cursor: pointer;
+}
+th {
+	text-align: center;
+}
+input.ng-valid,
+select.ng-valid {
+	border: #1ABC9C 1px solid;	
+}
+textarea.ng-invalid {
+	border: #E74C3C 1px solid;	
 }
