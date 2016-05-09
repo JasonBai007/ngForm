@@ -13,6 +13,7 @@
 > $ git clone https://github.com/JasonBai007/myApp.git
 
 
-### License
+License
 ----
+
 MIT
