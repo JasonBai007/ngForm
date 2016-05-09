@@ -10,7 +10,7 @@
 
 ### Installation
 
-> $ git clone https://github.com/JasonBai007/myApp.git
+> $ git clone https://github.com/JasonBai007/ngForm.git
 
 
 License
